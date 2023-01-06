@@ -1,36 +1,60 @@
 // Update the VARIANT arg in docker-compose.yml to pick a Node.js version: 10, 12, 14 
 {
-    "name": "Node.js & PostgreSQL",
+    "name": "Debian & PostgreSQL",
     "dockerComposeFile": "docker-compose.yml",
     "service": "app",
-
     // Set *default* container specific settings.json values on container create.
-    "settings": { 
-        "sqltools.connections": [{
-            "name": "Container database",
-            "driver": "PostgreSQL",
-            "previewLimit": 50,
-            "server": "localhost",
-            "port": 5432,
-            "database": "postgres",
-            "username": "postgres",
-            "password": "postgres"
-        }]
+    "settings": {
+        "update.showReleaseNotes": false,
+        "workbench.welcomePage.walkthroughs.openOnInstall": false,
+        "git.autofetch": true,
+        "git.confirmSync": false,
+        "git.enableSmartCommit": true,
+        "python.linting.enabled": true,
+        "python.linting.flake8Enabled": true,
+        "python.linting.flake8Args": [
+            "--max-line-length=129",
+            "--verbose"
+        ],
+        "python.formatting.provider": "black",
+        "python.formatting.blackArgs": [
+            "--line-length",
+            "129"
+        ],
+        "python.testing.pytestEnabled": true,
+        "editor.formatOnSave": true,
+        "sqltools.connections": [
+            {
+                "name": "Container database",
+                "driver": "PostgreSQL",
+                "previewLimit": 50,
+                "server": "localhost",
+                "port": 5432,
+                "database": "postgres",
+                "username": "postgres",
+                "password": "postgres"
+            }
+        ]
     },
-
     // Add the IDs of extensions you want installed when the container is created.
     "extensions": [
         "dbaeumer.vscode-eslint",
         "mtxr.sqltools",
-        "mtxr.sqltools-driver-pg"
+        "mtxr.sqltools-driver-pg",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "GitHub.vscode-pull-request-github",
+        "ms-azuretools.vscode-docker",
+        "ms-toolsai.jupyter",
+        "ms-toolsai.jupyter-renderers",
+        "ms-toolsai.jupyter-keymap",
+        "eamodio.gitlens"
     ]
-
     // Use 'forwardPorts' to make a list of ports inside the container available locally.
     // "forwardPorts": [3000, 5432],
-
     // Use 'postCreateCommand' to run commands after the container is created.
     // "postCreateCommand": "yarn install",
-
+    // "onCreateCommand": "pip install --no-cache-dir -r requirements.txt"
     // Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
     // "remoteUser": "node"
 }
