@@ -1,7 +1,7 @@
 {
     "name": "Debian & PostgreSQL",
     "dockerComposeFile": "docker-compose.yml",
-    "workspaceFolder": "/",
+    "workspaceFolder": "/workspace",
     "service": "app",
     "remoteUser": "vscode",
     "settings": {
@@ -10,6 +10,7 @@
         "git.autofetch": true,
         "git.confirmSync": false,
         "git.enableSmartCommit": true,
+        "git.rebaseWhenSync": true,
         "python.linting.enabled": true,
         "python.linting.flake8Enabled": true,
         "python.linting.flake8Args": [
