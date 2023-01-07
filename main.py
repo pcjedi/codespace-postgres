@@ -1,3 +1,4 @@
+import os
 import sqlalchemy as sa
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import Session
@@ -55,7 +56,7 @@ def drop_user(name, root_engine):
 
 def initdb(root_engine):
     create_user_n_database("dev", "dev", root_engine)
-    engine = sa.create_engine("postgresql+psycopg2://dev:dev@localhost/dev")
+    engine = sa.create_engine("postgresql+psycopg2://dev:dev@" + os.getenv("POSTGRES_HOST") + "/dev")
     Base.metadata.create_all(bind=engine)
     return engine
 
@@ -73,7 +74,7 @@ allcars = [
 
 
 def coreflow():
-    root_engine = sa.create_engine(name_or_url="postgresql+psycopg2://postgres:postgres@localhost")
+    root_engine = sa.create_engine(name_or_url="postgresql+psycopg2://postgres:postgres@" + os.getenv("POSTGRES_HOST"))
     engine = initdb(root_engine)
     with engine.begin() as conn:
         conn.execute(Base.metadata.tables["Cars"].insert(), allcars)
@@ -82,7 +83,7 @@ def coreflow():
 
 
 def ormflow():
-    root_engine = sa.create_engine(name_or_url="postgresql+psycopg2://postgres:postgres@localhost")
+    root_engine = sa.create_engine(name_or_url="postgresql+psycopg2://postgres:postgres@" + os.getenv("POSTGRES_HOST"))
     engine = initdb(root_engine)
     ses = Session(engine)
     ses.add_all([Car(**car) for car in allcars])

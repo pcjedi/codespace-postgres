@@ -5,7 +5,7 @@ on:
 jobs:
   jobs1:
     runs-on: ubuntu-latest
-    # container: debian:bullseye-slim
+    container: debian:bullseye-slim
     services:
         postgres:
           image: postgres:13
@@ -21,12 +21,13 @@ jobs:
             --health-timeout 5s
             --health-retries 5
     steps:
-      - run: sudo apt-get update
+      - run: apt-get update
       - run: > 
-          sudo
           apt-get install -y --no-install-recommends
           python3-pytest
           python3-sqlalchemy
           python3-psycopg2
       - uses: actions/checkout@v3
       - run: python3 -m pytest
+        env:
+          POSTGRES_HOST: postgres

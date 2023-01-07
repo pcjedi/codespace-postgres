@@ -3,6 +3,9 @@
     "dockerComposeFile": "docker-compose.yml",
     "workspaceFolder": "/workspace",
     "service": "app",
+    "containerEnv": {
+        "POSTGRES_HOST": "localhost"
+    },
     "remoteUser": "vscode",
     "settings": {
         "update.showReleaseNotes": false,
