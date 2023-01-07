@@ -7,6 +7,7 @@ RUN apt-get update && \
     sudo \ 
     python3-sqlalchemy \
     python3-psycopg2 \
+    python3-pytest \
     jupyter \
     black \
     python3-flake8 && \
