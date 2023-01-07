@@ -5,10 +5,7 @@ on:
 jobs:
   jobs1:
     runs-on: ubuntu-latest
-    container: 
-      image: debian:bullseye-slim
-      ports:
-        - 5432:5432
+    # container: debian:bullseye-slim
     services:
         postgres:
           image: postgres:13
