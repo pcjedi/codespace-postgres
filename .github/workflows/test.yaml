@@ -22,4 +22,5 @@ jobs:
           python3-pytest
           python3-sqlalchemy
           python3-psycopg2
+      - uses: actions/checkout@v3
       - run: python3 -m pytest
