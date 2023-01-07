@@ -29,3 +29,5 @@ jobs:
           python3-psycopg2
       - uses: actions/checkout@v3
       - run: python3 -m pytest
+        env:
+          POSTGRES_HOST: postgres
