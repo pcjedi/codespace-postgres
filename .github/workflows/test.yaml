@@ -4,22 +4,22 @@ on:
 
 jobs:
   jobs1:
-  runs-on: ubuntu-latest
-  container: debian:bullseye-slim
-  services:
-      postgres:
-        image: postgres:13
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: postgres
-        ports:
-          - 5432:5432
-  steps:
-    - run: apt-get update
-    - run: > 
-        apt-get install -y --no-install-recommends
-        python3-pytest
-        python3-sqlalchemy
-        python3-psycopg2
-    - run: python3 -m pytest
+    runs-on: ubuntu-latest
+    container: debian:bullseye-slim
+    services:
+        postgres:
+          image: postgres:13
+          env:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: postgres
+          ports:
+            - 5432:5432
+    steps:
+      - run: apt-get update
+      - run: > 
+          apt-get install -y --no-install-recommends
+          python3-pytest
+          python3-sqlalchemy
+          python3-psycopg2
+      - run: python3 -m pytest
