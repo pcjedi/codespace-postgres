@@ -56,7 +56,7 @@ def drop_user(name, root_engine):
 
 def initdb(root_engine):
     create_user_n_database("dev", "dev", root_engine)
-    engine = sa.create_engine("postgresql+psycopg2://dev:dev@localhost/dev")
+    engine = sa.create_engine("postgresql+psycopg2://dev:dev@" + os.getenv("POSTGRES_HOST") + "/dev")
     Base.metadata.create_all(bind=engine)
     return engine
 
